@@ -1,12 +1,15 @@
 import { call, put, takeLatest, select, all } from 'redux-saga/effects';
 import httpClient from '../dashboard/httpClient/invoices';
-import { invoicesFetched, changeMonth } from '../dashboard/invoices.reducer';
+import { invoicesFetched, changeMonth, loading } from '../dashboard/invoices.reducer';
 import { getCurrentMonth } from '../dashboard/invoices.selectors';
 
 function* fetchInvoicesSaga(): Generator<any, any, any> {
     const currentMonth = yield select(getCurrentMonth);
+    yield put(loading({isLoading: true}));
     const invoices = yield call([httpClient, 'getAll'], currentMonth);
     yield put(invoicesFetched(invoices));
+    yield put(loading({isLoading: false}));
+
 }
 
 function* changeMonthSaga(action: any): Generator<any, any> {

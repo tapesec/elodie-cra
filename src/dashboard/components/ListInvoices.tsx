@@ -19,7 +19,7 @@ import { LoadedTableCell, LoadedTableRow } from './styled/Table';
 const ListInvoices = () => {
     const dispatch = useDispatch();
     const list = useSelector(getInvoices);
-    
+
     useEffect(() => {
         dispatch({ type: "FETCH_INVOICES" })
     }, [dispatch]);
@@ -30,14 +30,19 @@ const ListInvoices = () => {
                 <TableHead>
                     <ListHeadInvoices />
                 </TableHead>
-                <TableBody sx={{height: '100%'}}>
-                    {list.invoices.length !== 0? 
-                    list.invoices.map((invoice: any) => (
-                        <ListRowInvoices key={invoice.id} invoice={invoice} />
-                    )) : 
-                    (<LoadedTableRow>
+                <TableBody>
+                    {list.isLoading && (<LoadedTableRow>
                         <LoadedTableCell colSpan={6}>Loading</LoadedTableCell>
                     </LoadedTableRow>)}
+                    {list.isLoading === false && list.invoices.length === 0 && 
+                        <TableRow>
+                            <TableCell colSpan={6}>
+                                Aucune facture pour le moment ...
+                            </TableCell>
+                        </TableRow>}
+                    {list.isLoading === false && list.invoices.map((invoice: any) => (
+                        <ListRowInvoices key={invoice.id} invoice={invoice} />
+                    ))}
                 </TableBody>
                 <TableFooter>
                     <TableRow>

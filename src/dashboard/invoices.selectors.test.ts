@@ -10,9 +10,12 @@ it('Should transform an object into an array', () => {
         }
     };
     const fakeState: RootState = {
-        invoices: {
-            invoices: fakeInvoice as unknown as Invoices,
-            dateMonth: 123456
+        dashboard: {
+            invoices: {
+                invoices: fakeInvoice as unknown as Invoices,
+                dateMonth: 123456,
+                isLoading: false
+            }
         }
     };
     const res = getInvoices(fakeState);
