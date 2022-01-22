@@ -12,6 +12,7 @@ import { TYPE_PAID } from '../invoices.actions';
 
 const ListRowInvoice = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
+
   const columnCheck = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const target = evt.currentTarget;
     dispatch({

@@ -12,6 +12,7 @@ const Dashboard = () => {
     <Container sx={{ position: 'relative' }} fixed maxWidth="xl">
       <h1 className={styles.hero}>
         <HealingIcon /> ELODIE <span>Gestion des Paiements</span>
+        <div className={styles.disclaimer}>Garde courage Danse avec les sparadras 👩‍⚕️</div>
       </h1>
       <MonthSelector />
       <ListInvoices />
