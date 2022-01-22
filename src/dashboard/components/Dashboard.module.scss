@@ -1,11 +1,22 @@
 .hero {
-    span {
-        font-size: smaller;
-        font-weight: normal;
-    }
+  span {
+    font-size: smaller;
+    font-weight: normal;
+  }
 }
 
 .currentMonth {
-    font-size: xxx-large;
-    text-transform: capitalize;
+  font-size: xxx-large;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.remainingToBePaid {
+  text-align: center;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: none;
+  span {
+    color: gray;
+  }
 }

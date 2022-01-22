@@ -1,10 +1,7 @@
 import Dashboard from './dashboard/components/Dashboard';
 
-
 function App() {
-  return (
-    <Dashboard />
-  );
+  return <Dashboard />;
 }
 
 export default App;
