@@ -53,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "prettier": "2.5.1",
     "redux-saga-test-plan": "^4.0.4"
   }

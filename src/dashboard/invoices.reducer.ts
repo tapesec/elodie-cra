@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import {
-  IchangeMonth,
-  IchangeLoadStatus,
-  IPatientPaid,
-  TYPE_PAID,
   IInvoiceRemoved,
+  IPatientPaid,
+  IchangeLoadStatus,
+  IchangeMonth,
+  TYPE_PAID,
 } from './invoices.actions';
-import { InvoicesAPIResponse, Invoices, InvoicesTotals, Invoice } from './httpClient/invoices';
+import { Invoice, Invoices, InvoicesAPIResponse, InvoicesTotals } from './httpClient/invoices';
 
 export interface InvoicesState {
   invoices: Invoices;

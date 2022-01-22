@@ -1,19 +1,19 @@
-import { call, put, takeLatest, select, all } from 'redux-saga/effects';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import httpClient, { InvoicesAPIResponse, PATCH_BODY } from '../dashboard/httpClient/invoices';
 import {
-  IchangeMonth,
   IInvoiceRemoved,
   IPatientPay,
+  IchangeMonth,
   TYPE_PAID,
 } from '../dashboard/invoices.actions';
 import {
-  invoicesFetched,
-  invoiceRemoved,
   changeMonth,
-  loading,
   invoicePaid,
+  invoiceRemoved,
+  invoicesFetched,
+  loading,
 } from '../dashboard/invoices.reducer';
 import { getCurrentMonth } from '../dashboard/invoices.selectors';
 

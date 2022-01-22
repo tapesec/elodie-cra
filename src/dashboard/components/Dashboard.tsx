@@ -1,10 +1,11 @@
 import Container from '@mui/material/Container';
 import HealingIcon from '@mui/icons-material/Healing';
+
+import AddInvoiceButton from './AddInvoiceButton';
 import DialogContainer from './DialogContainer';
+import ListInvoices from './ListInvoices';
 import MonthSelector from './MonthSelector';
 import styles from './Dashboard.module.scss';
-import ListInvoices from './ListInvoices';
-import AddInvoiceButton from './AddInvoiceButton';
 
 const Dashboard = () => {
   return (

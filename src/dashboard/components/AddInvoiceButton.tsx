@@ -1,14 +1,14 @@
-import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 import { toggleModal } from '../invoiceModal.reducer';
 import { useDispatch } from 'react-redux';
-import React from 'react';
 
 const AddInvoiceButton = () => {
   const dispatch = useDispatch();
   const onClickHandler = () => {
     dispatch(toggleModal({ open: true }));
   };
+
   return (
     <Fab
       sx={{

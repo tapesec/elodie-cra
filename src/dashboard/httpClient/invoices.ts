@@ -20,7 +20,7 @@ const invoicesClient = {
   },
   persist(data: ISubmitInvoice, id?: string): Promise<any> {
     if (id) {
-      let patch_describer = [
+      const patch_describer = [
         { op: 'replace', path: '/date', value: data.dateInvoice },
         { op: 'replace', path: '/patient_name', value: data.patient_name },
         { op: 'replace', path: '/patient_share/value', value: data.patient_share },
@@ -93,7 +93,7 @@ export interface PatientShare {
   value: number;
   paid: boolean;
 }
-export interface SECUShare extends PatientShare {}
+export type SECUShare = PatientShare;
 
 export interface InvoicesAPIResponse {
   invoices: Invoices;

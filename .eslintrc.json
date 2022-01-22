@@ -1,0 +1,20 @@
+{
+  "extends": ["react-app", "typescript"],
+  "plugins": ["unused-imports"],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "sort-imports": [
+          "error",
+          {
+            "ignoreDeclarationSort": true
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
+}
