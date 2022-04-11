@@ -8,14 +8,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-import { Suspense, lazy } from 'react';
 
 import ListHeadInvoices from './ListHeadInvoices';
 
 import { getInvoices } from '../invoices.selectors';
 import { LoadedTableCell, LoadedTableRow } from './styled/Table';
 
-const ListRowInvoice = lazy(() => import('tableRow/TableRow'));
+import ListRowInvoice from 'tableRow/TableRow';
 
 const ListInvoices = () => {
   const dispatch = useDispatch();
@@ -44,9 +43,7 @@ const ListInvoices = () => {
           )}
           {list.isLoading === false &&
             list.invoices.map((invoice: any) => (
-              <Suspense fallback={null}>
-                <ListRowInvoice key={invoice.id} invoice={invoice} />
-              </Suspense>
+              <ListRowInvoice key={invoice.id} invoice={invoice} />
             ))}
         </TableBody>
       </Table>
