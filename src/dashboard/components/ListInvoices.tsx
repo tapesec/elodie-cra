@@ -14,7 +14,7 @@ import ListHeadInvoices from './ListHeadInvoices';
 import { getInvoices } from '../invoices.selectors';
 import { LoadedTableCell, LoadedTableRow } from './styled/Table';
 
-import ListRowInvoice from 'tableRow/TableRow';
+import ListRowInvoice from '../../tableInvoices/ListRowInvoice';
 
 const ListInvoices = () => {
   const dispatch = useDispatch();

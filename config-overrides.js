@@ -1,10 +1,12 @@
+const { FederatedModuleImportPlugin } = require('./FederatedModuleImportPlugin');
+
 const { ModuleFederationPlugin } = require('webpack').container;
 const dependencies = require('./package.json').dependencies;
 
 const remotes = {
-  tableRow: {
+  TableInvoices: {
     url: 'https://test-mf-elodie-cra.s3.eu-west-3.amazonaws.com/remoteEntry.js',
-    federatedModules: ['TableRow'],
+    federatedModules: ['RowInvoice'],
   },
 };
 
@@ -31,22 +33,19 @@ const shared = {
 };
 
 function buildRemotes(mfConf) {
-  return Object.entries(mfConf.remotes || {}).reduce(
-    (acc, [remoteName]) => ({
-      ...acc,
-      [remoteName]: `internal ${remoteName}`,
-    }),
-    {}
-  );
+  return {
+    TableInvoices: 'internal TableInvoices',
+  };
 }
+console.log(buildRemotes({ remotes }), 'build remotes ---');
 
 module.exports = function override(config, env) {
-  console.log(config);
   config.entry = {
     main: './src/index.tsx',
   };
+
   config.externals = [
-    function ({ context, request }, callback) {
+    function ({ context, request, getResolve }, callback) {
       const addModulesToContainer = `function addModulesToContainer(container, moduleId) {
         return new Promise(async (resolve, reject) => {
           const factory = await container.get('./' + moduleId);
@@ -56,6 +55,7 @@ module.exports = function override(config, env) {
         });
       }`;
       if (pattern.includes(request)) {
+        console.log(request, '------------- MATCH ---------------');
         const federatedAppName = request.split('/')[0];
         return callback(
           null,
@@ -81,6 +81,7 @@ module.exports = function override(config, env) {
       return callback();
     },
   ];
+  config.plugins.push(new FederatedModuleImportPlugin());
   // config.externals.push(buildClientExternals({ remotes }));
   config.plugins.push(
     new ModuleFederationPlugin({

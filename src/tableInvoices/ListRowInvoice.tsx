@@ -3,12 +3,12 @@ import 'dayjs/locale/fr';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
-import { initInvoiceEdition } from '../invoiceModal.reducer';
+import { initInvoiceEdition } from '../dashboard/invoiceModal.reducer';
 
 import Checkbox from '@mui/material/Checkbox';
-import { StyledTableCell, StyledTableRow } from './styled/Table';
+import { StyledTableCell, StyledTableRow } from '../dashboard/components/styled/Table';
 
-import { TYPE_PAID } from '../invoices.actions';
+import { TYPE_PAID } from '../dashboard/invoices.actions';
 
 const ListRowInvoice = (props: Props): JSX.Element => {
   const dispatch = useDispatch();
